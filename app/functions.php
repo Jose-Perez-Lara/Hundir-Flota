@@ -34,7 +34,7 @@ function setBarcos(){
     foreach($barcos as $barco => $tamanyo){
         $colocado = false;
         while (!$colocado) {
-            $orientacion = rand(0, 1); // 0 = horizontal, 1 = vertical
+            $orientacion = rand(0, 1);
             $fila = rand(0, 9);
             $columna = rand(0, 9);
             if ($orientacion == 0 && $columna + $tamanyo <= 10) {
