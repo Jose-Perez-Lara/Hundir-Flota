@@ -2,15 +2,29 @@
 
 function getTablero($ataques,$tablero){
     
-    $output='<h2>Tablero</h2><table border="1">';
+    $output='<h2>Tablero</h2><table border="1">
+        <tr>
+        <td></td>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+            <td>4</td>
+            <td>5</td>
+            <td>6</td>
+            <td>7</td>
+            <td>8</td>
+            <td>9</td>
+            <td>10</td>
+        </tr>';
     for ($i = 0; $i < 10; $i++){
         $output.='<tr>';
+        $output.='<td>'.chr($i+ord(A)).'</td>';
         for ($j = 0; $j < 10; $j++){
             $output.='<td>';
             if ($ataques[$i][$j]!=0) {
                 $output.= $tablero[$i][$j] == 2 ? "X" : "O";
             } else {
-                $output.="  ";
+                $output.=" \n.";
             }
             $output.='</td>';
         }
@@ -44,14 +58,19 @@ function setBarcos(){
                     }
                     $colocado = true;
                 }
-            } else {
+            }
+
+            if($orientacion == 1 && $fila + $tamanyo <= 10){
                 if (comprobarEspacio($fila, $columna, $tablero,$orientacion,$tamanyo)) {
                     for ($i = 0; $i < $tamanyo; $i++) {
-                        $tablero[$fila][$columna + $i] = 1;
+                        $tablero[$fila + $i][$columna] = 1;
                     }
                     $colocado = true;
                 }
             }
+                
+            
+            
         }
     }
 }

@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 include_once "app/vars.php";
 include_once "app/functions.php";
 global $tablero, $ataques;
@@ -15,7 +12,7 @@ if(isset($_POST['tablero']) && isset($_POST['ataques'])){
 
 $res = "";
 if (isset($_POST['fila']) && isset($_POST['columna'])) {
-    switch ($_POST['fila']) {
+    switch (strtoupper($_POST['fila'])) {
         case "A":
             $fila = 0;
         break;
@@ -47,7 +44,7 @@ if (isset($_POST['fila']) && isset($_POST['columna'])) {
             $fila = 9;
         break;
     }
-    $columna = (int)$_POST['columna'];
+    $columna = (int)$_POST['columna']-1;
     if ($ataques[$fila][$columna]==0) {
         $ataques[$fila][$columna]=1;
         if ($tablero[$fila][$columna] == 1) {

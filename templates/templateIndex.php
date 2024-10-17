@@ -10,12 +10,7 @@
     <h1>Hundir la flota</h1>
     <?php
     print_r($bodyOutput);
-    dump($fila);
-    dump($columna);
-    dump($ataques[$fila][$columna]);
-    dump($ataques);
     dump($tablero);
-    dump($_POST);
     ?>
 </body>
 </html>
