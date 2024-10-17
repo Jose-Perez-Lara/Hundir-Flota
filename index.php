@@ -7,8 +7,8 @@ include_once "app/functions.php";
 global $tablero, $ataques;
 
 if(isset($_POST['tablero']) && isset($_POST['ataques'])){
-    $tablero = $_POST['tablero'];
-    $ataques = $_POST['ataques'];
+    $tablero = unserialize($_POST['tablero']);
+    $ataques = unserialize($_POST['ataques']);
 }else{
     setBarcos();
 }
@@ -47,14 +47,14 @@ if (isset($_POST['fila']) && isset($_POST['columna'])) {
             $fila = 9;
         break;
     }
-    $columna = $_POST['columna'];
-    if ($ataques[$fila][$columna]!=0) {
-        $ataques[$fila][$columna]==1;
+    $columna = (int)$_POST['columna'];
+    if ($ataques[$fila][$columna]==0) {
+        $ataques[$fila][$columna]=1;
         if ($tablero[$fila][$columna] == 1) {
-            $resultado = "Le has dado a un barco";
+            $res = "Le has dado a un barco";
             $tablero[$fila][$columna] = 2;
         } else {
-            $resultado = "Agua";
+            $res = "Agua";
         }
     } else {
         $res='Ya has atacado aqui';

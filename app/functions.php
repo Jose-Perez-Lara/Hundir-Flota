@@ -16,7 +16,7 @@ function getTablero($ataques,$tablero){
         }
         $output.='</tr>';
     }
-    
+    $output.="</table>";
 
     return $output;
 }
@@ -88,8 +88,8 @@ function getBodyOutput($ataques,$tablero,$victoria){
                 <input type="text" name="fila" id="fila"required>
                 <label for="columna">Columna (1-10)</label>
                 <input type="number" name="columna" id="columna"required>
-                <input type="hidden" name="tablero" value="'.$tablero.'">
-                <input type="hidden" name="ataques" value="'.$ataques.'">
+                <input type="hidden" name="tablero" value="'.serialize($tablero).'">
+                <input type="hidden" name="ataques" value="'.serialize($ataques).'">
                 <button type="submit">Atacar</button>
             </form>';
     }else{
@@ -110,4 +110,7 @@ function isVictoria($tablero) {
         }
     }
     return true;
+}
+function dump($var){
+    echo "<pre>". print_r($var, true) ."</pre>";
 }
